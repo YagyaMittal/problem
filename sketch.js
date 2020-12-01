@@ -12,6 +12,8 @@ var cars, car1, car2, car3, car4;
 
 var track, car1_img, car2_img, car3_img, car4_img;
 
+var cae = 0;
+
 function preload(){
   track = loadImage("../images/track.jpg");
   car1_img = loadImage("../images/car1.png");
@@ -38,7 +40,12 @@ function draw(){
     clear();
     game.play();
   }
-  if(gameState === 2){
+  if(gameState === 2 && player.rank === 4){
     game.end();
+    game.update(2);
+    game.displayRank();
+    // if(allPlayers[plr].distance >= 3700){}
+  
   }
+  console.log(cae);
 }

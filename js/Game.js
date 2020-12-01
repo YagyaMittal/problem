@@ -44,6 +44,7 @@ class Game {
     form.hide();
     
     Player.getPlayerInfo();
+    player.toGetCarsAtEnd();
     
     if(allPlayers !== undefined){
       background(rgb(80, 80, 80));
@@ -87,8 +88,13 @@ class Game {
       player.update();
     }
 
-    if(player.distance > 3860){
+    if(player.distance > 3700){
       gameState = 2;
+      player.rank = player.rank + 1;
+      Player.updateCae(player.rank);
+      // cae = player.rank;
+      console.log(player.rank);
+      player.update();
     }
    
     drawSprites();
@@ -96,5 +102,37 @@ class Game {
 
   end(){
     console.log("Game Ended");
+  }
+
+  displayRank(){
+    Player.getPlayerInfo();
+    console.log("displayRank");
+    for(var plr in allPlayers){
+      if(allPlayers[plr].rank === 1){
+        fill("Green");
+        textSize(36);
+        text("1st Position : " + allPlayers[plr].name, 50, 100);
+        console.log("first");
+      }
+      else if(allPlayers[plr].rank === 2){
+        fill("Red");
+        textSize(36);
+        text("2nd Position : " + allPlayers[plr].name, 50, 150);
+        console.log("second");
+      }
+      else if(allPlayers[plr].rank === 3){
+        fill("Blue");
+        textSize(36);
+        text("3rd Position : " + allPlayers[plr].name, 50, 200);
+        console.log("third");
+      }
+
+      else if(allPlayers[plr].rank === 4){
+        fill("Yellow");
+        textSize(36);
+        text("4th Position : " + allPlayers[plr].name, 50, 250);
+        console.log("fourth");
+      }
+    }
   }
 }
